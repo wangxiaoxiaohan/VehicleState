@@ -67,6 +67,7 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
     private LatLonPoint mStartPoint ;
     private LatLonPoint mEndPoint=null;
    private  Marker ChoosenPoint;
+   private  Marker LastPoint;
    private  DriveRouteResult  mDriveRouteResult;
    private Boolean isPark=true;
    private FrameLayout naviFrameLayout;
@@ -138,7 +139,8 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
         CircleOptions circleOptions=new CircleOptions()
                 .center(latLng)
                 .radius(3000)
-                .fillColor(Color.parseColor("#2b97d692"));
+                .strokeColor(Color.parseColor("#31f5de"))
+                .fillColor(Color.parseColor("#4b97d692"));
 
         circle=aMap.addCircle( circleOptions);
         Log.d(TAG, "drawCircle: 画了一次");
@@ -148,7 +150,7 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
     //画停车场
     private  void  drawParkMark(){
         for (int i=0;i<13;i++){
-            drawMark(aMap,addressList.get(i).getLatLng(),addressList.get(i).getAddress(),i);
+            drawMark(aMap,addressList.get(i).getLatLng(),addressList.get(i).getAddress());
         }
 
     }
@@ -169,16 +171,15 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
    //画电桩
     private  void drawChargeMark(){
          for (int i=13;i<56;i++){
-             drawMark(aMap,addressList.get(i).getLatLng(),addressList.get(i).getAddress(),i);
+             drawMark(aMap,addressList.get(i).getLatLng(),addressList.get(i).getAddress());
          }
-      Marker marker=  aMap.getMapScreenMarkers().get(1);
-          marker.getPeriod();
+
     }
 
 
 //画mark的方法
-    private  void  drawMark(AMap aMap ,LatLng myll,String title,int i){
-
+    private  void  drawMark(AMap aMap ,LatLng myll,String title){
+       if (AMapUtils.calculateLineDistance(currentLatLng,myll)<=3000){
         MarkerOptions markerOptions=new MarkerOptions();
         markerOptions.icon(BitmapDescriptorFactory
                 .fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.ic_location_2)))
@@ -189,15 +190,20 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
 
           aMap.addMarker(markerOptions);
 
-
+      }
     }
 
 //mark点击事件
      private  AMap.OnMarkerClickListener markerClickListener=new AMap.OnMarkerClickListener() {
         @Override
         public boolean onMarkerClick(Marker marker) {
-
-            marker.getIcons().clear();
+            //把“上个点”还原
+            if (ChoosenPoint!=null){
+                LastPoint =ChoosenPoint;
+            LastPoint.setIcon(BitmapDescriptorFactory
+                    .fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.ic_location_2)));
+        }
+          //换当前选中点的图标
             marker.setIcon(BitmapDescriptorFactory
                     .fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.ic_location_0)));
              AddressText.setText(marker.getTitle());
@@ -238,25 +244,13 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
                         drivingRouteOverlay.removeFromMap();
                         drivingRouteOverlay.addToMap();
                         drivingRouteOverlay.zoomToSpan();
-                      //  mBottomLayout.setVisibility(View.VISIBLE);
-                        int dis = (int) drivePath.getDistance();
-                        int dur = (int) drivePath.getDuration();
-                        String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
-                       // mRotueTimeDes.setText(des);
-                      //  mRouteDetailDes.setVisibility(View.VISIBLE);
-                        int taxiCost = (int) mDriveRouteResult.getTaxiCost();
-                    //    mRouteDetailDes.setText("打车约"+taxiCost+"元");
-//                        mBottomLayout.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Intent intent = new Intent(mContext,
-//                                        DriveRouteDetailActivity.class);
-//                                intent.putExtra("drive_path", drivePath);
-//                                intent.putExtra("drive_result",
-//                                        mDriveRouteResult);
-//                                startActivity(intent);
-//                            }
-//                        });
+
+//                        int dis = (int) drivePath.getDistance();
+//                        int dur = (int) drivePath.getDuration();
+                        //String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
+
+                        //int taxiCost = (int) mDriveRouteResult.getTaxiCost();
+
                     } else if (driveRouteResult!= null && driveRouteResult.getPaths() == null) {
                         Toast.makeText(mContext,"没有结果",Toast.LENGTH_SHORT).show();
                     }
@@ -275,10 +269,8 @@ public class ParkChargingFragment  extends Fragment implements RadioGroup.OnChec
         public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
 
         }
-
         @Override
         public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
-
         }
     };
     @Override

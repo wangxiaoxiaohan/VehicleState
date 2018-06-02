@@ -24,7 +24,7 @@ import java.util.List;
 
 
 /**
- * 导航路线图层类。
+ * 导航路线图层类。工具类
  */
 public class DrivingRouteOverLay extends com.spreadwin.vehiclestate.utils.RouteOverlay{
 

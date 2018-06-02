@@ -19,6 +19,7 @@ import com.spreadwin.vehiclestate.R;
 import java.util.ArrayList;
 import java.util.List;
 
+//工具类
 public class RouteOverlay {
 	protected List<Marker> stationMarkers = new ArrayList<Marker>();
 	protected List<Polyline> allPolyLines = new ArrayList<Polyline>();
