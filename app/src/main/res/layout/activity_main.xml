@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6">
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="60px"
+            android:background="@color/grey" />
+
+        <RadioGroup
+            android:id="@+id/rg_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_bm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/battery_motor"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/speed_energy_consumption"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/car_information"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/charging_pile_parking"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/smart_parking"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/driving_rating"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/rb_seclector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:text="@string/driving_playback"
+                android:textColor="@drawable/rb_text_seclector"
+                android:textSize="36px" />
+
+
+        </RadioGroup>
+
+    </FrameLayout>
+
+    <com.spreadwin.vehiclestate.view.FragmentSwitcher
+        android:id="@+id/switcher"
+        android:layout_width="0dp"
+        android:layout_weight="1.2"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60px"
+        android:background="@color/grey" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36px"
+            android:gravity="center"
+            android:text="@string/battery_power"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <ImageView
+            android:layout_width="168px"
+            android:layout_height="73px"
+            android:layout_gravity="center"
+            android:layout_marginTop="6px"
+            android:src="@drawable/battery_slot"
+            android:text="@string/battery_power"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6px"
+            android:gravity="center"
+            android:text="@string/recharge_mileage"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <ImageView
+            android:layout_width="300px"
+            android:layout_height="320px"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="6px"
+            android:src="@drawable/ic_car_left"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6px"
+            android:gravity="center"
+            android:text="左侧门开启"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+    </LinearLayout>
+
+</LinearLayout>

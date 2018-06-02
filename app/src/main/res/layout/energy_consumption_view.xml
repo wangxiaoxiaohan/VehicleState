@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8px"
+        android:orientation="horizontal">
+
+    <RadioGroup
+        android:id="@+id/rg_km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_km"
+            android:layout_width="106px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rb_km_seclector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/km_10"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="30px" />
+
+        <RadioButton
+            android:layout_width="106px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rb_km_seclector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="@string/km_50"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="30px" />
+
+        <RadioButton
+            android:layout_width="106px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rb_km_seclector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="@string/km_100"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="30px" />
+
+    </RadioGroup>
+
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"></Spinner>
+    </RelativeLayout>
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="5px"
+         android:orientation="horizontal"
+         >
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="55px"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/orange_circle"/>
+         <CheckBox
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="5px"
+             android:text="@string/motor_temperature"
+             android:textSize="24px"
+             android:button="@null"
+             android:drawableRight="@drawable/ic_eyes"
+             android:textColor="@color/grey_6"/>
+
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="130px"
+             android:layout_gravity="center_vertical"
+             android:src="@drawable/green_circle"/>
+         <CheckBox
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="5px"
+             android:text="@string/battery_temperature"
+             android:textSize="24px"
+             android:button="@null"
+             android:drawableRight="@drawable/ic_eyes"
+             android:textColor="@color/grey_6"/>
+
+     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55px"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/blue_circle"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5px"
+            android:text="@string/motor_control_temperature"
+            android:textSize="24px"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_eyes"
+            android:textColor="@color/grey_6"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60px"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/red_circle"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5px"
+            android:text="@string/charge_motor_temperature"
+            android:textSize="24px"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_eyes"
+            android:textColor="@color/grey_6"/>
+
+    </LinearLayout>
+
+
+    <com.idtk.smallchart.chart.CurveChart
+        android:id="@+id/curvechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

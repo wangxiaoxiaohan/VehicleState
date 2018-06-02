@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+        <ImageView
+            android:layout_width="345px"
+            android:layout_height="214px"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_car_framework"/>
+
+    <RadioGroup
+        android:id="@+id/rg_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_ec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rb_battary_seclector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/energy_consumption"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="36px" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rb_battary_seclector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/temperature"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="36px" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rb_battary_seclector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/voltage"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="36px" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rb_battary_seclector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/health_degree"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="36px" />
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rb_battary_seclector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/charge"
+            android:textColor="@drawable/rb_text_seclector"
+            android:textSize="36px" />
+    </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="horizontal"/>
+    <com.spreadwin.vehiclestate.view.FragmentSwitcher
+        android:id="@+id/switcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</LinearLayout>
